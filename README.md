@@ -13,25 +13,11 @@
 
 ## Installation
 
-### Using Makefile
-
-You can install and uninstall the script using the provided `Makefile`.
-
-1. **Install**:
-    ```sh
-    make install
-    ```
-
-2. **Uninstall**:
-    ```sh
-    make uninstall
-    ```
-
 ### Manual Installation
 
 1. Download the script to your home directory:
     ```sh
-    curl -o ~/code2context.sh https://raw.githubusercontent.com/richardleighdavies/code2context/main/code2context.sh
+    curl -o ~/code2context.sh https://raw.githubusercontent.com/richardleighdavies/code2context/main/source/code2context.sh
     ```
 
 2. Make the script executable:
