@@ -17,17 +17,17 @@
 
 1. Download the script to your home directory:
     ```sh
-    curl -o ~/code2context.sh https://raw.githubusercontent.com/richardleighdavies/code2context/main/source/code2context.sh
+    curl -o ./code2context.sh https://raw.githubusercontent.com/richardleighdavies/code2context/main/source/code2context.sh
     ```
 
 2. Make the script executable:
     ```sh
-    chmod +x ~/source/code2context.sh
+    chmod +x ./code2context.sh
     ```
 
 3. Move the script to `/usr/local/bin`:
     ```sh
-    sudo mv ~/source/code2context.sh /usr/local/bin/code2context
+    sudo mv ./code2context.sh /usr/local/bin/code2context
     ```
 
 ## Usage
