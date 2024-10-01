@@ -1,0 +1,47 @@
+#!/usr/bin/env zsh
+
+IGNORE_FILE="${HOME}/.code2contextignore"
+
+read_ignore_patterns() {
+    if [[ -f "${IGNORE_FILE}" ]]; then
+        grep -v '^#' "${IGNORE_FILE}" || true
+    fi
+}
+
+output_file_content() {
+    local filepath="${1}"
+    local relative_path="${filepath#./}"
+
+    if ! print -l "${IGNORE_PATTERNS[@]}" | grep -qF "${relative_path}"; then
+        print "File: ${relative_path}"
+        print "Content:"
+        cat "${filepath}" || print "Error: Unable to read ${filepath}"
+        print
+    fi
+}
+
+copy_to_clipboard() {
+    if (( ${+commands[pbcopy]} )); then
+        pbcopy
+    elif (( ${+commands[xclip]} )); then
+        xclip -selection clipboard
+    elif (( ${+commands[xsel]} )); then
+        xsel --clipboard --input
+    else
+        print "Warning: No clipboard utility found. Outputting to stdout."
+        cat
+    fi
+}
+
+main() {
+    local dir="${1:-.}"
+    IGNORE_PATTERNS=("${(@f)$(read_ignore_patterns)}")
+
+    find "${dir}" -type f -print0 | while IFS= read -r -d '' filepath; do
+        output_file_content "${filepath}"
+    done | copy_to_clipboard
+
+    print "Content copied to clipboard. Use Ctrl+V to paste."
+}
+
+main "$@"
