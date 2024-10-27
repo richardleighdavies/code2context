@@ -25,9 +25,9 @@
     chmod +x ./code2context.sh
     ```
 
-3. Move the script to `/usr/local/bin`:
+3. Copy the script to `/usr/local/bin`:
     ```sh
-    sudo mv ./code2context.sh /usr/local/bin/code2context
+    sudo cp ./code2context.sh /usr/local/bin/code2context
     ```
 
 ## Usage
